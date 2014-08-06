@@ -7,5 +7,5 @@
     "jsdom": "latest",
     "svg2png": "latest"
   },
-  "engine": "node 0.10.29"
+  "engine": "node >= 0.4.1"
 }
