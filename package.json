@@ -1,0 +1,11 @@
+{
+  "name": "Bania",
+  "description": "Dont break the chain service.",
+  "author": "Sumeet Singh <ortuna@gmail.com>",
+  "dependencies": {
+    "express": "latest",
+    "jsdom": "latest",
+    "svg2png": "latest"
+  },
+  "engine": "node 0.10.29"
+}
