@@ -1,11 +1,13 @@
 class Calendar
+  include Magick
+
   attr_accessor :x_offset, :y_offset,
                 :size, :margin,
                 :marked
 
   def initialize(options = {})
    @x_offset = 0 
-   @y_offset = 0 
+   @y_offset = 25 
    @size     = 10
    @margin   = 3 
 
@@ -13,9 +15,10 @@ class Calendar
   end
 
   def draw
-    png = ChunkyPNG::Image.new(1000, 500, ChunkyPNG::Color::TRANSPARENT)
-    day = 363
+    png = Image.new(1000, 500) { self.background_color = 'white'}
+    gc  = Draw.new
 
+    day = 363
     month = nil
 
     x_range.each do |x|
@@ -34,9 +37,19 @@ class Calendar
         x_coords = x_offset + x
         y_coords = y_offset + y
 
-        png.rect(x_coords, y_coords, x_coords + size, y_coords + size, color, color)
+        gc.stroke = 'black'
+        gc.fill    = 'blue'
+
+        gc.rectangle(x_coords, y_coords, x_coords + size, y_coords + size)
       end
     end 
+
+    gc.draw(png)
+    png.to_blob { self.format = 'jpg' }
+  end
+
+  def drawz
+    png = ChunkyPNG::Image.new(1000, 500, ChunkyPNG::Color::TRANSPARENT)
 
     return png
   end
