@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 
 gem 'pg'
+gem 'rails_12factor'
 
 gem 'rmagick'
 gem 'chunky_png', require: false
