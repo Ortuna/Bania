@@ -1,3 +1,4 @@
+require 'RMagick'
 class Calendar
   include Magick
 
