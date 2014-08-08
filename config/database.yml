@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+
+development:
+  <<: *default
+  database: bania_dev
+
+test:
+  <<: *default
+  database: bania_test
+
+production:
+  <<: *default
+  database: bania
