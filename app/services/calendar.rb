@@ -16,21 +16,23 @@ class Calendar
   end
 
   def draw
-    png = Image.new(1000, 500) { self.background_color = 'white'}
-    gc  = Draw.new
+    image = Image.new(1000, 500) { self.background_color = 'white'}
+    gc    = Draw.new
 
-    day = 363
+    day   = 363
     month = nil
 
     x_range.each do |x|
       y_range.each do |y|
         today      = Date.today - day.days
-        if(month != today.month)
-          month = today.month 
-          color = png_color(4)
+
+        if(month != today.strftime("%b"))
+          month = today.strftime("%b")
+          draw_month(month, x, image) 
+          color = block_color(4)
           @x_offset = @x_offset + 5
         else
-          color = marked.include?(today) ? png_color(1) : png_color(0)
+          color = marked.include?(today) ? block_color(1) : block_color(0)
         end
 
         day   = day - 1
@@ -38,24 +40,29 @@ class Calendar
         x_coords = x_offset + x
         y_coords = y_offset + y
 
-        gc.stroke = 'black'
-        gc.fill    = 'blue'
+        color = "#" + ("%06x" % (rand * 0xffffff))
+        gc.fill   = color
 
         gc.rectangle(x_coords, y_coords, x_coords + size, y_coords + size)
       end
     end 
 
-    gc.draw(png)
-    png.to_blob { self.format = 'jpg' }
-  end
-
-  def drawz
-    png = ChunkyPNG::Image.new(1000, 500, ChunkyPNG::Color::TRANSPARENT)
-
-    return png
+    gc.draw(image)
+    image.to_blob { self.format = 'jpg' }
   end
 
   private
+  def draw_month(month, x, canvas)
+    text = Magick::Draw.new
+    text.font_family = 'helvetica'
+    text.pointsize = 12 
+    text.gravity = Magick::CenterGravity
+
+    text.annotate(canvas, x, 0, 0, 0, month)
+
+
+  end
+
   def x_range
     range_with_step(52)
   end
@@ -69,11 +76,7 @@ class Calendar
     (1..range_end).step(size + margin)
   end
 
-  def png_color(count)
-    ChunkyPNG::Color.from_hex(range_color_in_hex(count))
-  end
-
-  def range_color_in_hex(count)
+  def block_color(count)
     case count
     when 0
       return '#EEEEEE'  

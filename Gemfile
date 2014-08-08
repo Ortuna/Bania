@@ -18,4 +18,5 @@ gem 'oily_png'
 
 group :developmnet do
   gem 'spring'
+  gem 'pry'
 end
