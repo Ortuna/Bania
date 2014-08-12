@@ -1,4 +1,3 @@
-require 'RMagick'
 class Calendar
   include Magick
 
@@ -25,20 +24,18 @@ class Calendar
     x_range.each do |x|
       y_range.each do |y|
         today      = Date.today - day.days
+        day   = day - 1
+        x_coords = x_offset + x
+        y_coords = y_offset + y
 
         if(month != today.strftime("%b"))
           month = today.strftime("%b")
-          draw_month(month, x, image) 
+          draw_month(month, x_coords, image) 
           color = block_color(4)
-          @x_offset = @x_offset + 5
+          @x_offset = @x_offset + @size + @margin
         else
           color = marked.include?(today) ? block_color(1) : block_color(0)
         end
-
-        day   = day - 1
-
-        x_coords = x_offset + x
-        y_coords = y_offset + y
 
         color = "#" + ("%06x" % (rand * 0xffffff))
         gc.fill   = color
@@ -53,14 +50,11 @@ class Calendar
 
   private
   def draw_month(month, x, canvas)
-    text = Magick::Draw.new
+    text = Draw.new
     text.font_family = 'helvetica'
     text.pointsize = 12 
-    text.gravity = Magick::CenterGravity
-
-    text.annotate(canvas, x, 0, 0, 0, month)
-
-
+    text.gravity   = SouthGravity 
+    text.annotate(canvas, 100, 0, x, y_offset, month)
   end
 
   def x_range

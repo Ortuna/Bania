@@ -12,11 +12,17 @@ gem 'pg'
 gem 'unicorn'
 gem 'rails_12factor'
 
-gem 'rmagick'
+gem 'rmagick', require: 'RMagick'
 gem 'chunky_png', require: false
 gem 'oily_png'
 
 group :developmnet do
   gem 'spring'
+  gem 'rspec-rails', '~> 3.0.1'
+  gem 'rspec-collection_matchers'
+  gem 'spring-commands-rspec'
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'pry'
 end
+
