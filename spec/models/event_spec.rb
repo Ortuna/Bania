@@ -9,6 +9,17 @@ describe Event do
     expect(event.errors[:from]).not_to be_empty
   end
 
+  describe '#dates_for' do
+    it 'returns all dates for a particular calendar and user' do
+      time = Time.now
+      3.times { Event.create(calendar: 'cool', from: 'user@user.com', created_at: time) }
+      Event.create(calendar: 'other', from: 'user@user.com', created_at: time)
+
+      expect(Event.dates_for('cool', 'user@user.com').count).to eq(3)
+      expect(Event.dates_for('cool', 'user@user.com').first).to eq(time)
+    end
+  end
+
   describe '#for_calendar' do
     it 'returns all events for a user on a calendar' do
       3.times { Event.create(calendar: 'cool', from: 'user@user.com') }

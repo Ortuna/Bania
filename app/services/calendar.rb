@@ -5,18 +5,18 @@ class Calendar
                 :size, :margin,
                 :marked
 
-  def initialize(options = {})
+
+  def initialize(marked)
    @x_offset = 0 
    @y_offset = 25 
    @size     = 10
    @margin   = 3 
 
-   @marked   = [Date.today-10.days, Date.today]
+   @marked   = marked.map(&:beginning_of_day)
   end
 
   def draw
     image = Image.new(1000, 500) { self.background_color = 'white'}
-    gc    = Draw.new
 
     day   = 363
     month = nil
@@ -31,30 +31,34 @@ class Calendar
         if(month != today.strftime("%b"))
           month = today.strftime("%b")
           draw_month(month, x_coords, image) 
-          color = block_color(4)
-          @x_offset = @x_offset + @size + @margin
-        else
-          color = marked.include?(today) ? block_color(1) : block_color(0)
+          @x_offset = x_offset + size + margin
         end
 
-        color = "#" + ("%06x" % (rand * 0xffffff))
-        gc.fill   = color
-
-        gc.rectangle(x_coords, y_coords, x_coords + size, y_coords + size)
+        draw = Draw.new
+        draw.fill = marked_color(today)
+        draw.rectangle(x_coords, y_coords, x_coords + size, y_coords + size)
+        draw.draw(image)
       end
     end 
 
-    gc.draw(image)
     image.to_blob { self.format = 'jpg' }
   end
 
   private
+  def marked_color(today)
+    block_color(marked_dates_for(today).count)
+  end
+
+  def marked_dates_for(today)
+    marked.select {|day| day == today }
+  end
+
   def draw_month(month, x, canvas)
     text = Draw.new
     text.font_family = 'helvetica'
-    text.pointsize = 12 
+    text.pointsize = 12
     text.gravity   = SouthGravity 
-    text.annotate(canvas, 100, 0, x, y_offset, month)
+    text.annotate(canvas, 85, 0, x, y_offset, month)
   end
 
   def x_range
