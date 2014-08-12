@@ -7,7 +7,7 @@ describe Calendar do
     dates = Event.dates_for('something', 'user@user.com')
     calendar = Calendar.new(dates)
 
-    expect(calendar.marked).to eq(dates)
+    expect(calendar.marked.count).to eq(3)
   end
 end
 
