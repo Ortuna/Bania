@@ -1,7 +1,9 @@
 class EventsController < ApplicationController
 
   def create
-    Event.create(from: params["sender"], calendar: strip_domain(params["To"]))
+    Event.create(from: params["sender"],
+                 body: params["body-plain"],
+                 calendar: strip_domain(params["To"]))
     render nothing: true
   end
 
