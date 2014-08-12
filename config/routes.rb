@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
-  get 'track', to: 'track#create'
+  resources :events, only: :create
 
 end

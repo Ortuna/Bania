@@ -45,12 +45,12 @@ class Calendar
   end
 
   private
-  def marked_color(today)
-    block_color(marked_dates_for(today).count)
+  def marked_color(date)
+    block_color(marked_dates_for(date).count)
   end
 
-  def marked_dates_for(today)
-    marked.select {|day| day == today }
+  def marked_dates_for(date)
+    marked.select {|day| day == date }
   end
 
   def draw_month(month, x, canvas)

@@ -1,4 +1,4 @@
-class TrackController < ApplicationController
+class EventsController < ApplicationController
 
   def create
     cal = ::Calendar.new(Event.dates_for('test', 'ortuna@gmail.com'))
