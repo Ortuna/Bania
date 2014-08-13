@@ -79,8 +79,18 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  
+
   config.s3_bucket = ENV['S3_BUCKET']
   config.s3_key    = ENV['S3_KEY']
   config.s3_secret = ENV['S3_SECRET']
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "app28277986.mailgun.org",
+    :user_name => "postmaster@app28277986.mailgun.org",
+    :password => "4lgz3v4x3-p8"
+  }
 end

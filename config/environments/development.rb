@@ -37,4 +37,14 @@ Rails.application.configure do
   config.s3_bucket = ENV['S3_BUCKET'] || 'bania_dev'
   config.s3_key    = ENV['S3_KEY']    || 'AKIAIXR5BBJJSSNZHVSA'
   config.s3_secret = ENV['S3_SECRET'] || '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'
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "app28277986.mailgun.org",
+    :user_name => "postmaster@app28277986.mailgun.org",
+    :password => "4lgz3v4x3-p8"
+  }
 end

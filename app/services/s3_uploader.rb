@@ -6,10 +6,11 @@ class S3Uploader
   end
 
   def perform
-    object = s3_object
-    object.content_type = "image/jpeg"
-    object.content = content
-    object.save
+    s3_object.tap do |object|
+      object.content_type = "image/jpeg"
+      object.content = content
+      object.save
+    end
   end
 
   private

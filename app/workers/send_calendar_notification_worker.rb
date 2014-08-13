@@ -9,6 +9,8 @@ class SendCalendarNotificationWorker
 
     cal = calendar(Event.dates_for(calendar, from))
     url = upload_to_s3(cal.draw).url
+
+    CalendarEventMailer.send_calendar(event, url).deliver
   end
 
   def upload_to_s3(blob)
