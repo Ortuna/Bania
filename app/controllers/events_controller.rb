@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   def create
     event = create_event(params["To"], params["sender"], params["body-plain"])
 
-    #Fire sidekiq queue here
     SendCalendarNotificationWorker.perform_async(event.id)
     render nothing: true
   end

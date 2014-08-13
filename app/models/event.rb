@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
       .pluck(:created_at)
   end
 
-  def self.for_calendar(calendar, from) 
+  def self.for_calendar(calendar, from)
     for_email(from)
       .where(calendar: calendar)
   end
