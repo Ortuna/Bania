@@ -16,13 +16,20 @@ gem 'rmagick', require: 'RMagick'
 gem 'chunky_png', require: false
 gem 'oily_png'
 
+gem 'sidekiq'
+gem 's3'
+
 group :developmnet do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0.1'
-  gem 'rspec-collection_matchers'
   gem 'spring-commands-rspec'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry'
 end
+
+group :test do
+   gem 'rspec-sidekiq'
+   gem 'rspec-collection_matchers'
+ end
 

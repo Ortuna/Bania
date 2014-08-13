@@ -34,4 +34,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.s3_bucket = ENV['S3_BUCKET'] || 'bania_dev'
+  config.s3_key    = ENV['S3_KEY']    || 'AKIAIXR5BBJJSSNZHVSA'
+  config.s3_secret = ENV['S3_SECRET'] || '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'
 end
