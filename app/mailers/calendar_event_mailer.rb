@@ -9,4 +9,5 @@ class CalendarEventMailer < ActionMailer::Base
          subject: 'Bania Calendar')
   end
 
+  private
 end

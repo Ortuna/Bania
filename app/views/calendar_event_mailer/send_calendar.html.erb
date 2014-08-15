@@ -2,8 +2,95 @@
 <html>
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <style type="text/css">
+      body {
+        font-size: 16px;
+        font-family: Helvetica;
+        color: #444444;
+      }
+
+      .calendar { 
+        width: 100%;
+      }
+
+      h1.title {
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-bottom: 1px solid #EEE;
+      }
+
+      .border {
+        border-right: 1px solid #EEE;
+      }
+
+      td {
+        padding: 1em;
+      }
+
+      td p {
+        text-align: center;  
+      }
+
+      p.heading {
+        font-size: 2em;
+      }
+
+      p.count {
+        font-size: 1.5em;
+      }
+
+      .legend {
+        width: 90%;
+        text-align: center;
+      }
+
+      .legend .direction {
+        font-size: 1em;
+        width:35px;
+      }
+
+      .legend li {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        list-style: none;
+      }
+
+    </style>
   </head>
   <body>
-    <%= image_tag(@image_url, width: '100%') %>
+    <h1 class="title">
+      Bania.io
+    </h1>
+
+    <img class="calendar" src="https://s3.amazonaws.com/bania_prod/51a35252ea7a7907e016bcc44e2d68b7.jpg">
+    <div class="legend">
+      <ul>
+        <li class="direction">less</li>
+        <li style="background-color: #eee"></li>
+        <li style="background-color: #d6e685"></li>
+        <li style="background-color: #8cc665"></li>
+        <li style="background-color: #44a340"></li>
+        <li style="background-color: #1e6823"></li>
+        <li class="direction">more</li>
+      </ul>
+    </div>
+
+    <!-- <%= image_tag(@image_url, width: '100%') %> -->
+    <table>
+      <tr>
+        <td class="border">
+          <p class="heading">Total Count</p>
+          <p class="count">45</p>
+        </td>
+        <td>
+          <p class="heading">Current Streak</p>
+          <p class="count">5</p>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>
