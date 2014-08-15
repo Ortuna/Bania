@@ -16,7 +16,9 @@ describe SendCalendarNotificationWorker do
     @double   = double(Calendar).as_null_object
     @instance = subject.new
 
-    allow(@instance).to receive(:upload_to_s3).with(anything)
+    allow(@instance).to receive(:upload_to_s3)
+      .with(anything)
+      .and_return(@double)
   end
 
   describe '#perform' do

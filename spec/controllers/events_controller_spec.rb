@@ -6,7 +6,7 @@ describe EventsController do
       post :create,
         "sender" => "user@test.com",
         "To" => "example@xyz.com",
-        "body-plain" => "something"
+        "Subject" => "something"
     end
 
     it 'can create a new event entry' do

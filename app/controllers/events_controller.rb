@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   private
   def create_event(calendar, from, body)
     Event.create(from: params["sender"],
-                 body: params["body-plain"],
+                 body: params["Subject"],
                  calendar: strip_domain(params["To"]))
   end
 
