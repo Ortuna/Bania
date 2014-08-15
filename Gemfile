@@ -20,6 +20,7 @@ gem 'sidekiq'
 gem 's3'
 
 gem 'premailer-rails'
+gem 'nokogiri'
 
 group :developmnet do
   gem 'spring'
