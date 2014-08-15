@@ -19,6 +19,8 @@ gem 'oily_png'
 gem 'sidekiq'
 gem 's3'
 
+gem 'premailer-rails'
+
 group :developmnet do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0.1'
