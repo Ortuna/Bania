@@ -16,7 +16,7 @@ class Calendar
   end
 
   def draw
-    image = Image.new(1000, 150) { self.background_color = 'white'}
+    image = Image.new(860, 150) { self.background_color = 'white'}
 
     day   = 363
     month = nil
