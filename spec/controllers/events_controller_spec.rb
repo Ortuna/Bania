@@ -28,6 +28,12 @@ describe EventsController do
       post_request 
       expect(SendCalendarNotificationWorker).to have(1).job
     end
+
+    it 'returns 422 when bad recipient address' do
+      post :create, sender: "user@test.com", recipient: "bz!!", Subject: 'something'
+
+      assert_response 422
+    end
   end
 
   describe '#strip_domain' do
