@@ -22,6 +22,8 @@ gem 's3'
 gem 'premailer-rails'
 gem 'nokogiri'
 
+gem 'foundation-rails'
+
 group :developmnet do
   gem 'spring'
   gem 'rspec-rails', '~> 3.0.1'

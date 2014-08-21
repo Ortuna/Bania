@@ -46,6 +46,9 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.1)
+    foundation-rails (5.3.0.1)
+      railties (>= 3.1.0)
+      sass (>= 3.2.0)
     hike (1.2.3)
     htmlentities (4.3.2)
     i18n (0.6.11)
@@ -187,6 +190,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   chunky_png
+  foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   nokogiri

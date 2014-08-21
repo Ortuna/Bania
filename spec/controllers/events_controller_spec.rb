@@ -5,7 +5,7 @@ describe EventsController do
     def post_request
       post :create,
         "sender" => "user@test.com",
-        "To" => "example@xyz.com",
+        "recipient" => "example@xyz.com",
         "Subject" => "something"
     end
 
