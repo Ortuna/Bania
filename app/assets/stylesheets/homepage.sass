@@ -15,6 +15,8 @@ body
         list-style: none
         display: inline-block
         padding-right: .5em
+        a
+          text-decoration: underline
 
   section.heading
     padding-top: 3em
@@ -45,8 +47,35 @@ body
       margin-top: 2em
       border-bottom: .1em solid $green
       button
-        font-size: 2.5em
+        font-size: 2.0em
         background-color: $green
         border: .03em solid $dark-green
         border-bottom: .075em solid $dark-green
+
+  section.faq
+    clear: both
+    h2
+      text-align: center
+      color: $green
+      font-weight: bold
+    h3
+      font-weight: bold
+      font-size: 1.5em
+    .answer
+      margin-bottom: 3em
+
+  footer
+    background-color: $green
+    color: #fff
+    padding: 1em
+    .heart
+      color: $dark-green
+    .message
+      margin-bottom: 0
+      padding-top: .5em
+    .donate
+      margin-bottom: 0
+      background-color: #fff
+      color: $green
+      font-weight: bold
 
