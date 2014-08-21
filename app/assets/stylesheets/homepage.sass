@@ -1,6 +1,7 @@
 $charchoal: #4d4d4d
 $green: #7fbf54
 $dark-green: #379a31
+$image-shadow: 2px 5px 5px rgba(0,0,0,0.07)
 body
   font-family: 'Ubuntu', sans-serif
   .navigation
@@ -34,10 +35,16 @@ body
       margin-top: 2em
       .screen-box
         color:  $charchoal
-        height: 5em
         background-color: #F2F2F2
         float: left
-        height: 15em
+        height: auto
+        img
+          width: 90%
+          margin: 1em
+          -webkit-box-shadow: $image-shadow
+          -moz-box-shadow: $image-shadow
+          box-shadow: $image-shadow
+
         .instruction
           font-weight: 300
         em
@@ -51,6 +58,10 @@ body
         background-color: $green
         border: .03em solid $dark-green
         border-bottom: .075em solid $dark-green
+        &:hover
+          background-color: $dark-green
+          border: .03em solid $green
+          border-bottom: .075em solid $green
 
   section#faq
     clear: both

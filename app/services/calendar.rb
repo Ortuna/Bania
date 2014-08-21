@@ -30,7 +30,7 @@ class Calendar
 
         if(month != today.strftime("%b"))
           month = today.strftime("%b")
-          draw_month(month, x_coords, image) 
+          draw_month(month, x_coords, image)
           @x_offset = x_offset + size + margin
         end
 
