@@ -3,6 +3,7 @@ class CalendarEventMailer < ActionMailer::Base
 
   def send_calendar(event, calendar_image_url)
     @image_url   = calendar_image_url
+    @calendar    = event[:calendar]
     @total_count = Event.for_calendar(calendar: event[:calendar], from: event[:from]).count
     @streak      = Event.streak_for(calendar: event[:calendar], from: event[:from])
 

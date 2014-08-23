@@ -13,6 +13,7 @@ describe Event do
     it 'gives the current streak for this user and calendar' do
       time = Time.now
       (0..3).map { |i| Event.create(calendar: 'cool', from: 'user@user.com', created_at: time - i.days) }
+      Event.create(calendar: 'cool', from: 'user@user.com', created_at: time - 1.days) 
       Event.create(calendar: 'cool', from: 'user@user.com', created_at: time - 10.days) 
 
       expect(Event.streak_for(calendar: 'cool', from: 'user@user.com')).to eq(4)

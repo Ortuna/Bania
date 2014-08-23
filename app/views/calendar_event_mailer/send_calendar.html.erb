@@ -19,7 +19,15 @@
 
       table {
         width: 100%;
+      }
+
+      table.status {
         border-bottom: 1px solid #EEE;
+      }
+
+      table.heading td {
+        border-bottom: 1px solid #EEE;
+        text-align: center;
       }
 
       .border {
@@ -28,10 +36,11 @@
 
       td {
         padding: 1em;
+        width: 50%;
       }
 
       td p {
-        text-align: center;  
+        text-align: center;
       }
 
       p.heading {
@@ -43,7 +52,6 @@
       }
 
       .legend {
-        width: 90%;
         text-align: center;
       }
 
@@ -59,15 +67,30 @@
         list-style: none;
       }
 
+      .calendar {
+        text-align: center;
+      }
+
     </style>
   </head>
   <body>
-    <h1 class="title">
-      Bania.io
-    </h1>
+    <table class="heading">
+      <tr>
+        <td>
+          <h1 class="title">
+            Bania.io
+          </h1>
+        </td>
+        <td>
+            <h2>Report for: <%= @calendar %></h2>
+        </td>
+      </tr>
+    </table>
 
+    <div class="calendar">
+      <%= image_tag(@image_url, width: '100%', class: 'calendar') %>
+    </div>
 
-    <%= image_tag(@image_url, width: '100%', class: 'calendar') %>
     <div class="legend">
       <ul>
         <li class="direction">less</li>
@@ -80,7 +103,7 @@
       </ul>
     </div>
 
-    <table>
+    <table class="status">
       <tr>
         <td class="border">
           <p class="heading">Total Count</p>
