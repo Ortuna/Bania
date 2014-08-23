@@ -23,8 +23,8 @@ class Calendar
 
     x_range.each do |x|
       y_range.each do |y|
-        today      = Date.today - day.days
-        day   = day - 1
+        today    = Date.today - day.days
+        day      = day - 1
         x_coords = x_offset + x
         y_coords = y_offset + y
 
