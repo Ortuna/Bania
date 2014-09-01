@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   def create
-    calendar = strip_domain(params["recipient"])
+    calendar = format_calendar_name(params["recipient"])
     from     = params["sender"]
     subject  = params["Subject"]
 
@@ -13,6 +13,11 @@ class EventsController < ApplicationController
   end
 
   private
+  def format_calendar_name(calendar)
+    calendar = strip_domain(calendar)
+    calendar && calendar.downcase
+  end
+
   def render_fail
     render nothing: true, status: 422
   end

@@ -29,6 +29,11 @@ describe EventsController do
       expect(SendCalendarNotificationWorker).to have(1).job
     end
 
+    it 'is case insensative on the calendar' do
+      post :create, sender: "user@test.com", recipient: "Something@xyz.com", Subject: 'something'
+      expect(Event.find_by(from: 'user@test.com')[:calendar]).to eq('something')
+    end
+
     it 'returns 422 when bad recipient address' do
       post :create, sender: "user@test.com", recipient: "bz!!", Subject: 'something'
 
