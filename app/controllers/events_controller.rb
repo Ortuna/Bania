@@ -7,7 +7,7 @@ class EventsController < ApplicationController
     render_fail and return unless calendar
 
     event = create_event(calendar, from, subject)
-    SendCalendarNotificationWorker.perform_async(event.id)
+    SendCalendarNotificationWorker.perform(event.id)
 
     render nothing: true
   end
